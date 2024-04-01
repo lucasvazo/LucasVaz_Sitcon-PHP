@@ -4,12 +4,13 @@
     --stc-blue-03: #00629B;
     --stc-gray-01: #EFEFEF;
     --stc-gray-02: #C4C4C4;
+    --stc-gray-03: #999;
     --stc-white: #FFFFFF;
     --stc-orange-01: #FFD6B0;
     --stc-orange-02: #FF8200;
 }
 
 .active {
-    pointer-events: none; /* Makes the link non-clickable */
-    color: #999; /* Changes the color to indicate it's inactive */
+    pointer-events: none;
+    color: #999;
 }
