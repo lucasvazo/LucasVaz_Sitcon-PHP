@@ -1,0 +1,46 @@
+.page-header {
+    background-color: var(--stc-blue-03);
+    color: var(--stc-white);
+    height: 85px;
+    white-space: nowrap;
+}
+
+.page-header--nav {
+    gap: 30px;
+}
+
+.page-header--nav > a {
+    padding: 12px 30px;
+    border: 1px solid var(--stc-white);
+    color: white;
+    font-weight: 700;
+    font-size: var(--text-medium);
+    border-radius: 0.75rem;
+}
+
+.page-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--stc-gray-01);
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+.page-footer {
+    background-color: rgba(237, 248, 252, 1);
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+}
+
+.page-footer > h2 {
+    color: var(--stc-blue-03);
+    font-size: var(--text-medium);
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    height: fit-content;
+}

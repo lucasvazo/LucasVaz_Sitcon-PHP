@@ -8,9 +8,20 @@
     --stc-white: #FFFFFF;
     --stc-orange-01: #FFD6B0;
     --stc-orange-02: #FF8200;
+
+    /* Fontes (Tamanhos) */
+    --text-small: 0.875rem;
+    --text-medium: 1rem;
+    --text-large: 1.125rem;
+}
+
+* {
+    font-family: proxima-nova, sans-serif;
+    font-style: normal;
+    font-weight: 100;
 }
 
 .active {
     pointer-events: none;
-    color: #999;
+    color: red;
 }

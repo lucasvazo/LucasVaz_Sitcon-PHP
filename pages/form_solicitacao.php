@@ -20,11 +20,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="assets/styles/reset.css" />
     <link rel="stylesheet" href="assets/styles/global.css" />
+    <link rel="stylesheet" href="assets/styles/styles.css" />
 </head>
-<body>
+<body class="page-content">
     <?php include 'includes/header.php' ?>
-    <main class="container">
-        FORM
+    <main class="container main-content">
     </main>
     <?php include 'includes/footer.php' ?>
 </body>

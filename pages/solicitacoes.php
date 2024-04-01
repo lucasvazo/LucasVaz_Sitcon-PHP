@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucas Vaz - Sitcon</title>
+    <title>Lista de Solicitações</title>
     <meta name="author" content="Lucas Vaz">
     <link rel="icon" href="./assets/images/sitcon-logo.ico">
     <link rel="icon" href="./assets/images/sitcon-logo.ico">
@@ -20,11 +20,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="assets/styles/reset.css" />
     <link rel="stylesheet" href="assets/styles/global.css" />
+    <link rel="stylesheet" href="assets/styles/styles.css" />
 </head>
-<body>
+<body class="page-content">
     <?php include 'includes/header.php' ?>
-    <main class="container">
-        SOLICITACOES
+    <main class="container main-content">
     </main>
     <?php include 'includes/footer.php' ?>
 </body>

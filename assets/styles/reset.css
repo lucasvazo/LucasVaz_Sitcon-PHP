@@ -19,8 +19,9 @@ dd {
 
 ul[role='list'],
 ol[role='list'],
-li {
+li, a {
     list-style: none;
+    text-decoration: none;
 }
 
 html:focus-within {
