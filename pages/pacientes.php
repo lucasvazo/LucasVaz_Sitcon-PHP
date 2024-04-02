@@ -1,6 +1,16 @@
 <?php 
-    include 'config/connect.php'
+    include 'config/connect.php';
+    $itemsPerPage = 10;
+    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $offset = ($currentPage - 1) * $itemsPerPage;
+
+    $query = "SELECT * FROM paciente LIMIT $offset, $itemsPerPage";
+    $result = $connect->query($query);
+
+    $totalItems = $result->num_rows;
+    $totalPages = ceil($totalItems / $itemsPerPage);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +19,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solicitações Clínicas</title>
     <meta name="author" content="Lucas Vaz">
-    <link rel="icon" href="./assets/images/sitcon-logo.ico">
     <link rel="icon" href="./assets/images/sitcon-logo.ico">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
@@ -23,12 +32,47 @@
     <!-- Styles -->
     <link rel="stylesheet" href="assets/styles/reset.css" />
     <link rel="stylesheet" href="assets/styles/global.css" />
-    <link rel="stylesheet" href="assets/styles/styles.css" />
+    <link rel="stylesheet" href="assets/styles/pacientes.css" />
 </head>
 <body class="page-content">
     <?php include 'includes/header.php' ?>
     <main class="container main-content">
+
+        <form class="search-input--form">
+            <i class="fas fa-search"></i>
+            <input 
+                type="text" 
+                id="filter-patients"
+                placeholder="Pesquisar..." 
+                aria-label="Pesquisar paciente"
+            >
+        </form>
+        
+        <table class="table patients-table">
+            <thead> 
+                <tr>
+                    <th scope="col">Paciente</th>
+                    <th scope="col">Nascimento</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row['nome'] . "</td>";
+                        echo "<td>" . date('d/m/Y', strtotime($row['data_nascimento'])) . "</td>";
+                        echo "<td>" . $row['cpf'] . "</td>";
+                        echo "<td><a href='formulario.php?id=" . $row['id'] . "' class='btn btn-primary'>Preencher Formulário</a></td>";
+                        echo "</tr>";
+                    }
+                ?>
+            </tbody>
+        </table>
+
     </main>
     <?php include 'includes/footer.php' ?>
+    <script src="assets/scripts/search-bar.js" defer></script>
 </body>
 </html>
