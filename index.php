@@ -16,7 +16,7 @@ run();
 
 function run() {
     global $routes;
-    $uri = $_SERVER['REQUEST_URI'];
+    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $found = false;
     foreach ($routes as $path => $pagePath) {
         if ($path !== $uri) continue;

@@ -7,8 +7,17 @@
     $query = "SELECT * FROM paciente LIMIT $offset, $itemsPerPage";
     $result = $connect->query($query);
 
-    $totalItems = $result->num_rows;
+    $totalItems = $connect->query("SELECT COUNT(*) as total FROM paciente")->fetch_assoc()['total'];
     $totalPages = ceil($totalItems / $itemsPerPage);
+
+    if ($currentPage < 1) {
+        $currentPage = 1;
+    } elseif ($currentPage > $totalPages) {
+        $currentPage = $totalPages;
+    }
+
+    $query = "SELECT * FROM paciente LIMIT $offset, $itemsPerPage";
+    $result = $connect->query($query);
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +74,7 @@
                         echo "<td>" . date('d/m/Y', strtotime($row['data_nascimento'])) . "</td>";
                         echo "<td>" . $row['cpf'] . "</td>";
                         echo "<td>
-                                <a href='formulario.php?id=" 
+                                <a href='form_solicitacao.php?id=" 
                                 . $row['id'] 
                                 . "' class='btn-primary btn-primary-orange'>
                                     Prosseguir
@@ -80,7 +89,9 @@
         <nav>
             <ul class="pagination justify-content-center">
                 <li class="page-item <?php echo $currentPage <= 1 ? 'disabled' : ''; ?>">
-                    <a class="page-link" href="?page=<?php echo $currentPage - 1; ?>" tabindex="-1" aria-disabled="true">Anterior</a>
+                    <a class="page-link" href="?page=<?php echo $currentPage - 1; ?>" tabindex="-1" aria-disabled="true">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </a>
                 </li>
                 <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
                     <li class="page-item <?php echo $i == $currentPage ? 'active' : ''; ?>">
@@ -88,7 +99,9 @@
                     </li>
                 <?php endfor; ?>
                 <li class="page-item <?php echo $currentPage >= $totalPages ? 'disabled' : ''; ?>">
-                    <a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">Próximo</a>
+                    <a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
                 </li>
             </ul>
         </nav>
