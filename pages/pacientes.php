@@ -48,7 +48,7 @@
             >
         </form>
         
-        <table class="table patients-table">
+        <table class="table patients-table box-shadow">
             <thead> 
                 <tr>
                     <th scope="col">Paciente</th>
@@ -60,16 +60,38 @@
             <tbody>
                 <?php
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
+                        echo "<tr scope='row' >";
                         echo "<td>" . $row['nome'] . "</td>";
                         echo "<td>" . date('d/m/Y', strtotime($row['data_nascimento'])) . "</td>";
                         echo "<td>" . $row['cpf'] . "</td>";
-                        echo "<td><a href='formulario.php?id=" . $row['id'] . "' class='btn btn-primary'>Preencher Formulário</a></td>";
+                        echo "<td>
+                                <a href='formulario.php?id=" 
+                                . $row['id'] 
+                                . "' class='btn-primary btn-primary-orange'>
+                                    Prosseguir
+                                </a>
+                            </td>";
                         echo "</tr>";
                     }
                 ?>
             </tbody>
         </table>
+
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item <?php echo $currentPage <= 1 ? 'disabled' : ''; ?>">
+                    <a class="page-link" href="?page=<?php echo $currentPage - 1; ?>" tabindex="-1" aria-disabled="true">Anterior</a>
+                </li>
+                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                    <li class="page-item <?php echo $i == $currentPage ? 'active' : ''; ?>">
+                        <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                    </li>
+                <?php endfor; ?>
+                <li class="page-item <?php echo $currentPage >= $totalPages ? 'disabled' : ''; ?>">
+                    <a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">Próximo</a>
+                </li>
+            </ul>
+        </nav>
 
     </main>
     <?php include 'includes/footer.php' ?>

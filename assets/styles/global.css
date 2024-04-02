@@ -67,3 +67,29 @@
     width: 100%;
     height: fit-content;
 }
+
+.box-shadow {
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary {
+    border-radius: 12px;
+    padding:12px 24px;
+    font-size: var(--text-small);
+    font-weight: 600;
+    color: var(--stc-white);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+}
+
+.btn-primary:active {
+    filter: brightness(1.1);
+    transform: translateY(1);
+}
+
+.btn-primary.btn-primary-orange {
+    background-color: var(--stc-orange-02);
+    border: none;
+}

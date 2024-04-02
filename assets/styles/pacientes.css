@@ -50,3 +50,50 @@
 
 
 /* Table - Pacientes */
+.patients-table {
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.patients-table > thead tr {
+    border-radius: 12px;
+    height: 62px;
+}
+
+.patients-table > thead tr th {
+    background-color: var(--stc-blue-03);
+    color: var(--stc-white);
+    font-weight: 700;
+    vertical-align: middle;
+    font-size: var(--text-large);
+}
+
+.patients-table > thead tr th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.patients-table > thead tr th:last-child {
+    border-top-right-radius: 12px;
+}
+
+.patients-table > tbody tr {
+    height: 62px;
+}
+
+.patients-table > tbody tr td {
+    border: none;
+}
+
+.patients-table > tbody tr:nth-child(even) td {
+    background-color: var(--stc-blue-02);
+}
+
+.patients-table > tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+
+.patients-table > tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
