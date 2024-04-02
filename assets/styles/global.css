@@ -93,3 +93,9 @@
     background-color: var(--stc-orange-02);
     border: none;
 }
+
+.btn-primary.btn-primary-outlined {
+    background-color: transparent;
+    border: 1px solid var(--stc-blue-03);
+    color: var(--stc-blue-03);
+}

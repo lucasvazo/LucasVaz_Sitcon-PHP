@@ -3,7 +3,7 @@
 $routes = [];
 
 route('/', 'pages/pacientes.php');
-route('/form_solicitacao', 'pages/form_solicitacao.php');
+route('/solicitar', 'pages/solicitar.php');
 route('/solicitacoes', 'pages/solicitacoes.php');
 route('/404', 'pages/404.php');
 
@@ -19,12 +19,12 @@ function run() {
     $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $found = false;
     foreach ($routes as $path => $pagePath) {
-        if ($path !== $uri) continue;
-        $found = true;
-        include($pagePath);
-        break;
+        if (preg_match("#^$path$#", $uri, $matches)) {
+            $found = true;
+            include($pagePath);
+            break;
+        }
     }
-
     if (!$found) {
         include('pages/404.php');
     }
